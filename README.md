@@ -1,5 +1,11 @@
 # Check-status-orange-pi-telegram
 ***
+add image send htop 
+
+```
+sudo apt-get install htop aha wkhtmltopdf
+```
+***
 Telegram bot checks the status of your orange pi, showing the temperature, degree of loading and ip. Added userid validation function.
 Do not forget to add your TOKEN and user ID to the code
 ***
