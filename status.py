@@ -19,9 +19,8 @@ dp = Dispatcher(bot)
 @dp.message_handler(Command('status'))
 async def status(message: types.Message):
     user_id = message.from_user.id
-    allowed_user_id = USER_ID
 
-    if user_id != allowed_user_id:
+    if user_id != USER_ID:
         await message.answer("You are not authorized to run this command.")
         return
     # Run the command to get system status and store the output
@@ -35,7 +34,7 @@ async def status(message: types.Message):
     time.sleep(1)
     command = "echo q | htop | aha --black --line-fix > htop.html && wkhtmltoimage --width 538 htop.html htop.png"
     subprocess.run(command, shell=True, check=True)
-    time.sleep(1)
+    time.sleep(3)
 
 
     # Send the output back to the user
@@ -43,11 +42,11 @@ async def status(message: types.Message):
         await message.answer(cmd_output)
         with open('htop.png', 'rb') as photo:
             # Send the photo using the bot
-            await bot.send_photo(allowed_user_id, photo)
+            await bot.send_photo(USER_ID, photo)
 
     except:
     # Handle other errors
-        await bot.send_message(allowed_user_id, "An error occurred")
+        await bot.send_message(USER_ID, "An error occurred")
 
 # Start the bot
 if __name__ == '__main__':
