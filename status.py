@@ -33,7 +33,6 @@ async def status(message: types.Message):
     # Send the output back to the user
     await message.answer(cmd_output)
 
-# Start the bot
 if __name__ == '__main__':
     logging.info("Starting bot...")
     executor.start_polling(dp, skip_updates=True)
